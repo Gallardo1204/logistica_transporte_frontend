@@ -1,0 +1,67 @@
+.bloque {
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+}
+
+
+.icono {
+  border-radius: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 8px 8px 16px #d6d6d6, -8px -8px 16px #ffffff;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.icono {
+  &.productos {
+    background-color: #b4d7ff;
+
+    a {
+      color: #10427a;
+    }
+  }
+
+  &.clientes {
+    background-color: #daf0db;
+
+    a {
+      color: #387c3a;
+    }
+  }
+
+  &.bodegas {
+    background-color: #ffc9c9;
+
+    a {
+      color: #b33939;
+    }
+  }
+
+  &.puertos {
+    background-color: #d1ccc0;
+
+    a {
+      color: #424240;
+    }
+  }
+
+  &.lterrestre {
+    background-color: #fdd7c6;
+
+    a {
+      color: #cd6133;
+    }
+  }
+
+  &.lmaritima {
+    background-color: #6969be;
+
+    a {
+      color: #2c2c54;
+    }
+  }
+}
