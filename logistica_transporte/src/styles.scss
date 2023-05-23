@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+.formulario,
+.busqueda,
+.tabla-resultados {
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  border: 2px solid rgb(235, 235, 235);
+}
+
+.tabla-resultados {
+  margin-bottom: 2rem;
+}
+
+.titulo-modulo {
+  font-size: 2rem;
+  margin: 2rem 0;
+  font-weight: 500;
+  color: rgb(63, 63, 63);
+}
+
+button {
+  margin-right: 5px;
+}
