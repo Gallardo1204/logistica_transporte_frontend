@@ -1,0 +1,135 @@
+<div class="container py-3">
+
+  <div class="row">
+    <div class="atras">
+      <a routerLink="/" class="btn btn-outline-dark"><i class="fa-solid fa-left-long"></i> Atras</a>
+    </div>
+  </div>
+
+  <div class="row titulo-modulo">
+    Modulo Logistica Terrestre
+  </div>
+
+  <form [formGroup]="formLogisTerrestre" class="formulario">
+    <div class="row">
+      <div class="col-3">
+        <label for="id" class="form-label">ID</label>
+        <input type="text" class="form-control" formControlName="id" id="id" readonly>
+      </div>
+
+      <div class="col-3">
+        <label for="cantidadProducto" class="form-label">Cantidad de Producto</label>
+        <input type="text" class="form-control" formControlName="cantidadProducto" id="cantidadProducto" required>
+      </div>
+
+      <div class="col-3">
+        <label for="fechaRegistro" class="form-label">Fecha de Registro</label>
+        <input type="date" class="form-control" formControlName="fechaRegistro" id="fechaRegistro" required>
+      </div>
+
+      <div class="col-3">
+        <label for="fechaEntrega" class="form-label">Fecha de Entrega</label>
+        <input type="date" class="form-control" formControlName="fechaEntrega" id="fechaEntrega">
+      </div>
+
+      <div class="col-3">
+        <label for="idBodega" class="form-label">ID de Bodega</label>
+        <input type="text" class="form-control" formControlName="idBodega" id="idBodega" required>
+      </div>
+
+      <div class="col-3">
+        <label for="idCliente" class="form-label">ID de Cliente</label>
+        <input type="text" class="form-control" formControlName="idCliente" id="idCliente" required>
+      </div>
+
+      <div class="col-3">
+        <label for="idProducto" class="form-label">ID de Producto</label>
+        <input type="text" class="form-control" formControlName="idProducto" id="idProducto" required>
+      </div>
+
+      <div class="col-3">
+        <label for="numeroGuia" class="form-label">Número de Guía</label>
+        <input type="text" class="form-control" formControlName="numeroGuia" id="numeroGuia">
+      </div>
+
+      <div class="col-3">
+        <label for="placaVehiculo" class="form-label">Placa de Vehículo</label>
+        <input type="text" class="form-control" formControlName="placaVehiculo" id="placaVehiculo" required>
+      </div>
+
+      <div class="col-3">
+        <label for="precioNormal" class="form-label">Precio</label>
+        <input type="text" class="form-control" formControlName="precioNormal" id="precioNormal" required>
+      </div>
+
+      <div class="col-12 mt-2">
+        <button (click)="guardarLogisTerrestre()" class="btn btn-success btn-submit"
+          [disabled]="formLogisTerrestre.invalid">
+          {{ modoEdicion ? 'Editar' : 'Guardar' }}
+        </button>
+      </div>
+
+    </div>
+  </form>
+
+
+  <div class="row busqueda">
+    <div class="col">
+      <input type="text" class="form-control" [(ngModel)]="busqueda" (keyup.enter)="buscarLogisTerrestre()"
+        placeholder="Buscar por ID...">
+    </div>
+    <div class="col">
+      <button class="btn btn-secondary" (click)=" buscarLogisTerrestre()">Buscar</button>
+    </div>
+  </div>
+
+
+  <div class="row tabla-resultados">
+    <h5>Tabla de resultados</h5>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Id</th>
+          <th scope="col">Cantidad de Producto</th>
+          <th scope="col">Fecha de Registro</th>
+          <th scope="col">Fecha de Entrega</th>
+          <th scope="col">ID de Bodega</th>
+          <th scope="col">ID de Cliente</th>
+          <th scope="col">ID de Producto</th>
+          <th scope="col">Número de Guía</th>
+          <th scope="col">Placa de Vehículo</th>
+          <th scope="col">Precio Normal</th>
+          <th scope="col">Precio con Descuento</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let logTer of logisTerrestre; index as i;">
+          <th>{{i+1}}</th>
+          <th>{{ logTer.id }}</th>
+          <td>{{ logTer.cantidadProducto }}</td>
+          <td>{{ logTer.fechaRegistro}}</td>
+          <td>{{ logTer.fechaEntrega}}</td>
+          <td>{{ logTer.idBodega}}</td>
+          <td>{{ logTer.idCliente}}</td>
+          <td>{{ logTer.idProducto}}</td>
+          <td>{{ logTer.numeroGuia}}</td>
+          <td>{{ logTer.placaVehiculo}}</td>
+          <td>{{ logTer.precioNormal}}</td>
+          <td>{{ logTer.precioDescuento}}</td>
+          <td>
+            <button class="btn btn-warning my-1" (click)="editarLogisTerrestre( logTer )">
+              <i class="fa-solid fa-pen-to-square"></i> Editar
+            </button>
+            <button class="btn btn-danger my-1" (click)="eliminarLogisTerrestre( logTer.id)">
+              <i class="fa-solid fa-trash-can"></i> Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>

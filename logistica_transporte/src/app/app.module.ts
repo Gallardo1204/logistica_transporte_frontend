@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { LogiTerrestreComponent } from './components/logi-terrestre/logi-terrestre.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -19,7 +20,8 @@ export function tokenGetter() {
     AppComponent,
     HomeComponent,
     ProductosComponent,
-    LoginComponent
+    LoginComponent,
+    LogiTerrestreComponent
   ],
   imports: [
     BrowserModule,
