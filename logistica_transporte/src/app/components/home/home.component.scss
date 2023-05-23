@@ -1,0 +1,43 @@
+.bloque {
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+}
+
+
+.icono {
+  border-radius: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 8px 8px 16px #d6d6d6, -8px -8px 16px #ffffff;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.icono {
+  &.productos {
+    background-color: #e9ffde;
+
+    a {
+      color: #6ab04c;
+    }
+  }
+
+  &.lterrestre {
+    background-color: #fdd7c6;
+
+    a {
+      color: #cd6133;
+    }
+  }
+
+  &.lmaritima {
+    background-color: #6969be;
+
+    a {
+      color: #2c2c54;
+    }
+  }
+}
