@@ -1,0 +1,80 @@
+<div class="container py-3">
+
+
+  <div class="row">
+    <div class="atras">
+      <a routerLink="/" class="btn btn-outline-dark"><i class="fa-solid fa-left-long"></i> Atras</a>
+    </div>
+  </div>
+
+  <div class="row titulo-modulo">
+    Modulo PRODUCTOS
+  </div>
+
+  <form [formGroup]="formProducto" class="formulario">
+    <div class="row">
+      <div class="col">
+        <label class="form-label">ID:</label>
+        <input type="text" class="form-control" id="id" formControlName="id" readonly>
+      </div>
+      <div class="col">
+        <label class="form-label">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" formControlName="nombre" required>
+      </div>
+      <div class="col">
+        <label class="form-label">Precio:</label>
+        <input type="text" class="form-control" id="precio" formControlName="precio" required>
+      </div>
+      <div class="col">
+        <button (click)="guardarProducto()" class="btn btn-success btn-submit" [disabled]="formProducto.invalid">
+          {{ modoEdicion ? 'Editar' : 'Guardar' }}
+        </button>
+      </div>
+    </div>
+  </form>
+
+
+  <div class="row busqueda">
+    <div class="col">
+      <input type="text" class="form-control" [(ngModel)]="busqueda" (keyup.enter)="buscarProductos()"
+        placeholder="Buscar por ID...">
+    </div>
+    <div class="col">
+      <button class="btn btn-secondary" (click)=" buscarProductos()">Buscar</button>
+    </div>
+  </div>
+
+
+  <div class="row tabla-resultados">
+    <h5>Tabla de resultados</h5>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Id</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productos; index as i;">
+          <th>{{i+1}}</th>
+          <th>{{ producto.id }}</th>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.precio}}</td>
+          <td>
+            <button class="btn btn-warning" (click)="editarProducto( producto )">
+              <i class="fa-solid fa-pen-to-square"></i> Editar
+            </button>
+            <button class="btn btn-danger" (click)="eliminarProducto( producto.id)">
+              <i class="fa-solid fa-trash-can"></i> Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
