@@ -6,18 +6,34 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/login/login.component';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ProductosComponent
+    ProductosComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:8001']
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
