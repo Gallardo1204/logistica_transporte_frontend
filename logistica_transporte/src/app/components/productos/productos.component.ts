@@ -16,7 +16,6 @@ export class ProductosComponent implements OnInit {
   busqueda: string = '';
   productos: any;
   modoEdicion = false;
-  productofiltrado: any;
 
 
   constructor(
@@ -46,7 +45,6 @@ export class ProductosComponent implements OnInit {
     })
   }
 
-
   buscarProductos() {
     if (this.busqueda) {
       this.productos = [];
@@ -65,7 +63,6 @@ export class ProductosComponent implements OnInit {
       });
     }
   }
-
 
   editarProducto(producto: Producto) {
 
@@ -114,11 +111,9 @@ export class ProductosComponent implements OnInit {
       })
     }
 
-
     /* se restauran valores defecto */
     this.limpiarCampos();
     this.modoEdicion = false;
-
 
   }
 

@@ -13,9 +13,12 @@ export class ProductoService {
 
   constructor(private http: HttpClient) { }
 
-
   getProductos(): Observable<any> {
     return this.http.get<any>(`${this.BASE_API}productos`);
+  }
+
+  buscarProductoId(id: number): Observable<any> {
+    return this.http.get(`${this.BASE_API}productos/${id}`);
   }
 
   guardarProducto(producto: Producto) {
@@ -24,16 +27,12 @@ export class ProductoService {
     )
   }
 
-  eliminarProducto(id: number): Observable<any> {
-    return this.http.delete(`${this.BASE_API}productos/${id}`);
-  }
-
   editarProducto(producto: Producto): Observable<any> {
     return this.http.put(`${this.BASE_API}productos/${producto.id}`, producto);
   }
 
-  buscarProductoId(id: number): Observable<any> {
-    return this.http.get(`${this.BASE_API}productos/${id}`);
+  eliminarProducto(id: number): Observable<any> {
+    return this.http.delete(`${this.BASE_API}productos/${id}`);
   }
 
 }
