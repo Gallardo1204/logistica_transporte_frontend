@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LogiTerrestreComponent } from './components/logi-terrestre/logi-terrestre.component';
+import { LogiMaritimaComponent } from './components/logi-maritima/logi-maritima.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -21,7 +22,8 @@ export function tokenGetter() {
     HomeComponent,
     ProductosComponent,
     LoginComponent,
-    LogiTerrestreComponent
+    LogiTerrestreComponent,
+    LogiMaritimaComponent
   ],
   imports: [
     BrowserModule,

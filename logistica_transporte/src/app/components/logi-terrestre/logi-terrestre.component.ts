@@ -138,7 +138,7 @@ export class LogiTerrestreComponent {
       this.servicio.editarLogisTerrestre(logisTerrestre).subscribe({
         next: resp => {
           this.listarLogisTerrestre();
-          msjConfirmacion("Producto guardado exitosamente");
+          msjConfirmacion("Logistica Terrestre guardada exitosamente");
         },
         error: error => {
           msjError(error);

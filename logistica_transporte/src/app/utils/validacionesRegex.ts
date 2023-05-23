@@ -4,7 +4,7 @@ export function validarPlaca(placa: string): boolean {
 }
 
 export function validarNumeroFlota(numeroFlota: string): boolean {
-  const numeroFlotaRegex = /^[A-Za-z]{3}\d{4}[A-Z]$/;
+  const numeroFlotaRegex = /^[A-Za-z]{3}\d{4}[A-Za-z]$/;
   return numeroFlotaRegex.test(numeroFlota);
 }
 

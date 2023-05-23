@@ -1,0 +1,135 @@
+<div class="container py-3">
+
+  <div class="row">
+    <div class="atras">
+      <a routerLink="/" class="btn btn-outline-dark"><i class="fa-solid fa-left-long"></i> Atras</a>
+    </div>
+  </div>
+
+  <div class="row titulo-modulo">
+    Modulo Logistica Maritima
+  </div>
+
+  <form [formGroup]="formLogisMaritima" class="formulario">
+    <div class="row">
+      <div class="col-3">
+        <label for="id" class="form-label">ID</label>
+        <input type="text" class="form-control" formControlName="id" id="id" readonly>
+      </div>
+
+      <div class="col-3">
+        <label for="cantidadProducto" class="form-label">Cantidad de Producto</label>
+        <input type="text" class="form-control" formControlName="cantidadProducto" id="cantidadProducto" required>
+      </div>
+
+      <div class="col-3">
+        <label for="fechaRegistro" class="form-label">Fecha de Registro</label>
+        <input type="date" class="form-control" formControlName="fechaRegistro" id="fechaRegistro" required>
+      </div>
+
+      <div class="col-3">
+        <label for="fechaEntrega" class="form-label">Fecha de Entrega</label>
+        <input type="date" class="form-control" formControlName="fechaEntrega" id="fechaEntrega">
+      </div>
+
+      <div class="col-3">
+        <label for="idPuerto" class="form-label">ID del puerto</label>
+        <input type="text" class="form-control" formControlName="idPuerto" id="idPuerto" required>
+      </div>
+
+      <div class="col-3">
+        <label for="idCliente" class="form-label">ID de Cliente</label>
+        <input type="text" class="form-control" formControlName="idCliente" id="idCliente" required>
+      </div>
+
+      <div class="col-3">
+        <label for="idProducto" class="form-label">ID de Producto</label>
+        <input type="text" class="form-control" formControlName="idProducto" id="idProducto" required>
+      </div>
+
+      <div class="col-3">
+        <label for="numeroGuia" class="form-label">Número de Guía</label>
+        <input type="text" class="form-control" formControlName="numeroGuia" id="numeroGuia">
+      </div>
+
+      <div class="col-3">
+        <label for="numeroFlota" class="form-label">Número de Flota</label>
+        <input type="text" class="form-control" formControlName="numeroFlota" id="numeroFlota" required>
+      </div>
+
+      <div class="col-3">
+        <label for="precioNormal" class="form-label">Precio</label>
+        <input type="text" class="form-control" formControlName="precioNormal" id="precioNormal" required>
+      </div>
+
+      <div class="col-12 mt-2">
+        <button (click)="guardarLogisMaritima()" class="btn btn-success btn-submit"
+          [disabled]="formLogisMaritima.invalid">
+          {{ modoEdicion ? 'Editar' : 'Guardar' }}
+        </button>
+      </div>
+
+    </div>
+  </form>
+
+
+  <div class="row busqueda">
+    <div class="col">
+      <input type="text" class="form-control" [(ngModel)]="busqueda" (keyup.enter)="buscarLogisMaritima()"
+        placeholder="Buscar por ID...">
+    </div>
+    <div class="col">
+      <button class="btn btn-secondary" (click)=" buscarLogisMaritima()">Buscar</button>
+    </div>
+  </div>
+
+
+  <div class="row tabla-resultados">
+    <h5>Tabla de resultados</h5>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Id</th>
+          <th scope="col">Cantidad de Producto</th>
+          <th scope="col">Fecha de Registro</th>
+          <th scope="col">Fecha de Entrega</th>
+          <th scope="col">ID de Bodega</th>
+          <th scope="col">ID de Cliente</th>
+          <th scope="col">ID de Producto</th>
+          <th scope="col">Número de Guía</th>
+          <th scope="col">Placa de Vehículo</th>
+          <th scope="col">Precio Normal</th>
+          <th scope="col">Precio con Descuento</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let logMar of logisMaritima; index as i;">
+          <th>{{i+1}}</th>
+          <th>{{ logMar.id }}</th>
+          <td>{{ logMar.cantidadProducto }}</td>
+          <td>{{ logMar.fechaRegistro}}</td>
+          <td>{{ logMar.fechaEntrega}}</td>
+          <td>{{ logMar.idBodega}}</td>
+          <td>{{ logMar.idCliente}}</td>
+          <td>{{ logMar.idProducto}}</td>
+          <td>{{ logMar.numeroGuia}}</td>
+          <td>{{ logMar.placaVehiculo}}</td>
+          <td>{{ logMar.precioNormal}}</td>
+          <td>{{ logMar.precioDescuento}}</td>
+          <td>
+            <button class="btn btn-warning my-1" (click)="editarLogisMaritima( logMar )">
+              <i class="fa-solid fa-pen-to-square"></i> Editar
+            </button>
+            <button class="btn btn-danger my-1" (click)="eliminarLogisMaritima( logMar.id)">
+              <i class="fa-solid fa-trash-can"></i> Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
